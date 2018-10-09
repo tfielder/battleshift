@@ -19,7 +19,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
+  gem 'pry'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :test do

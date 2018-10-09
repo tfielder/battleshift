@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'user sees user credentials stored in the database' do
   scenario 'as a guest' do
+    User.create(name: "Josiah Bartlett", email: "jbartlet@example.com", id: 1)
     #Background: There is a user stored in the database with an id of 1, name of Josiah Bartlet, email of jbartlet@example.com
     # As a guest user
     # When I visit "/users/1"

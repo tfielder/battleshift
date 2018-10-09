@@ -8,7 +8,10 @@ feature 'user sees user credentials stored in the database' do
     visit '/users/1'
     # Then I should see the user's name Josiah Bartlet
     expect(page).to have_content("Josiah Bartlet")
+    expect(page).to have_css(".name")
     # And I should see the user's email address jbartlet@example.com
     expect(page).to have_content("jbartlet@example.com")
+    expect(page).to have_css(".email")
+
   end
 end

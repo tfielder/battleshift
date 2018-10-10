@@ -17,7 +17,6 @@ class BattleShiftService
 
   def self.fetch_users_data
     new.fetch_users_data
-    binding.pry
   end
 
   def fetch_one_user_data

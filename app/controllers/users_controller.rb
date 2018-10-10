@@ -16,9 +16,8 @@ class UsersController < ApplicationController
     response = @connection.get("/api/v1/users")
 
     @users = JSON.parse(response.body, symbolize_names: true)
-    @users.map do |row|
+    @users = @users.map do |row|
       UserView.new(row)
     end
-    binding.pry
   end
 end

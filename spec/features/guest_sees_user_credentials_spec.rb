@@ -10,12 +10,10 @@ feature 'user sees user credentials stored in the database' do
     expect(page).to have_content("Josiah Bartlet")
     expect(page).to have_css(".name")
     # And I should see the user's email address jbartlet@example.com
-    expect(page).to have_content("jbartlet@example.com")
+    expect(page).to have_content("jbarlet@example.com")
     expect(page).to have_css(".email")
   end
   scenario 'as a guest' do
-    id1 = User.create(name: "Smalls", email: "small@example.com").id
-    id2 = User.create(name: "Clark", email: "smallville@town.com").id
 
     visit "/users"
 

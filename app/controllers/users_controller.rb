@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_result = UserResults.new(params[:id])
+    result = UserResults.new(params[:id])
+    @user_result = result.one_user
   end
 end

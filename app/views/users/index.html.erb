@@ -1,4 +1,4 @@
-<h1>User: <% @users.each do |user| %>
-  <%= user["name"] %>
-  <%= user["email"] %>
-  <% end %>
+<% @users_results.each do |user| %>
+  <%= user.name %>
+  <%= user.email %>
+<% end %>

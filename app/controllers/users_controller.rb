@@ -1,18 +1,10 @@
 class UsersController < ApplicationController
-  def show
-    id = params[:id]
-    @conn = Faraday.new(url: "http://localhost:3000")
-
-    response = @conn.get("api/v1/users/#{id}")
-
-    @user = JSON.parse(response.body, symbolize_name: true)
+  def index
+    results = UserResults.new
+    @users_results = results.all_users
   end
 
-  def index
-    @conn = Faraday.new(url: "http://localhost:3000")
-
-    response = @conn.get("api/v1/users")
-
-    @users = JSON.parse(response.body, symbolize_name: true)
+  def show
+    @user_result = UserResults.new(params[:id])
   end
 end

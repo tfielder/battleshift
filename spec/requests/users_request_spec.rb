@@ -57,9 +57,3 @@ describe "users api endpoints" do
   end
 end
 
-
-
-
-User.update(params[:email])
-render json: User.find(params[:id])
-

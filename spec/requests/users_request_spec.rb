@@ -37,4 +37,22 @@ describe "users api endpoints" do
       expect(returned_user).to have_key(:id)
     end
   end
+  context "PATCH /api/v1/users/:id" do
+    it "can edit a user's information" do
+      cj   = User.create!(name: "C.J. Cregg", id: 111)
+
+      patch "/api/v1/users/#{cj.id}", params:  {"email": "cj@gmail.com"}
+
+      expect(response.status).to be 200
+
+      returned_user = JSON.parse(response.body, symbolize_names: true)
+      user_email = returned_user[:email]
+      expect(returned_user).to have_key(:email)
+      expect(user_email).to eq("cj@gmail.com")
+    end
+  end
 end
+
+# 0. set up figaro
+# 1. this file - patch test
+# 2. feature test - all api calls stubbed out to heroku link

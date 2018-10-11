@@ -37,4 +37,10 @@ describe "users api endpoints" do
       expect(returned_user).to have_key(:id)
     end
   end
+
+  context "PATCH /api/v1/users/:id"
 end
+
+0. set up figaro 
+1. this file - patch test
+2. feature test - all api calls stubbed out to heroku link

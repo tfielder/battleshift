@@ -8,6 +8,11 @@ module Api
       def show
         render json: User.find(params[:id])
       end
+
+      def update
+        #redirect
+        #patch
+      end
     end
   end
 end

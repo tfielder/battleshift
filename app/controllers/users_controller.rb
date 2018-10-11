@@ -8,4 +8,5 @@ class UsersController < ApplicationController
     result = UserResults.new(params[:id])
     @user_result = result.one_user
   end
+
 end

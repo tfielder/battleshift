@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     response = BattleShiftService.new(filter)
     url = response.access_api
     @user = response.fetch_one_user_data
-    url.patch("api/v1/users/#{@user[:id]}", body = params[:email])
+    url.patch("api/v1/users/#{@user[:id]}", {email: params[:email]})
     redirect_to('/users')
     flash[:notice] = "Successfully updated #{@user[:name]}"
   end

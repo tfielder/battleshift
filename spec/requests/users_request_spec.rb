@@ -37,6 +37,7 @@ describe "users api endpoints" do
       expect(returned_user).to have_key(:id)
     end
   end
+
   context "PATCH /api/v1/users/:id" do
     it "can edit a user's information" do
       cj   = User.create!(name: "C.J. Cregg", id: 111)

@@ -14,7 +14,6 @@ module Api
         user.update(email: params[:email])
         render json: User.find(params[:id])
       end
-
     end
   end
 end

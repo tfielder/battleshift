@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def index
     results = UserResults.new
-    @users_results = results.all_users
+    results = results.all_users
+    @users_results = results.sort_by {|user| user.id}
   end
 
   def show
@@ -11,13 +12,17 @@ class UsersController < ApplicationController
 
   def edit
     filter = params[:id]
-    api = BattleShiftService.new(filter)
-    @user = api.fetch_one_user_data
+    response = BattleShiftService.new(filter)
+    @user = response.fetch_one_user_data
   end
 
   def update
-    # redirect_to proc { action: "patch", api_v1_user_path(@user) }
-    redirect_to url_for(:controller => Api::V1::UsersController, :action => :update)
+    filter = params[:id]
+    response = BattleShiftService.new(filter)
+    url = response.access_api
+    @user = response.fetch_one_user_data
+    url.patch("api/v1/users/#{@user[:id]}", body = params[:email])
+    redirect_to('/users')
+    flash[:notice] = "Successfully updated #{@user[:name]}"
   end
 end
-#add block in application.html.erb for flash messages

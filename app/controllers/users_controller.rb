@@ -10,8 +10,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    api = BattleShiftService.new(@filter)
+    filter = params[:id]
+    api = BattleShiftService.new(filter)
     @user = api.fetch_one_user_data
+  end
+
+  def update
+    # redirect_to proc { action: "patch", api_v1_user_path(@user) }
+    redirect_to url_for(:controller => Api::V1::UsersController, :action => :update)
   end
 end
 #add block in application.html.erb for flash messages

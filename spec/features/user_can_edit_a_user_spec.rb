@@ -13,7 +13,7 @@ feature "user can edit a user's information" do
     # Then I should be on "/users/1/edit"
     expect(current_path).to eq("/users/1/edit")
     # When I fill in the email field with "josiah@example.com"
-    fill_in "/api/v1/users/1[email]", with: "josiah@gmail.com"
+    fill_in "email", with: "josiah@gmail.com"
     # And I click "Save"
     click_on("Save")
     # Then I should be on "/users"

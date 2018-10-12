@@ -10,6 +10,7 @@ module Api
       end
 
       def update
+        binding.pry
         #redirect
         #patch
       end

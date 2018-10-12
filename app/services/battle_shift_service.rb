@@ -1,7 +1,7 @@
 class BattleShiftService
   def initialize(filter)
     @filter = filter
-    @conn = Faraday.new(url: "http://localhost:3000") do |faraday|
+    @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

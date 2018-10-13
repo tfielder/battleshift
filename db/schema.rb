@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20181013200908) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "activation_digest"
-    t.boolean "activated"
+    t.boolean "activated", default: false
     t.datetime "activated_at"
   end
 

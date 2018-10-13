@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
   describe "account_activation" do
-    let(:mail) { UserMailer.account_activation }
+    user = User.create!(name: "C.J. Cregg", id: 111, email: "happy@example.com", password: "1234")
+    let(:mail) { UserMailer.account_activation(user) }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Account activation")

@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
       redirect_to "/dashboard"
     else
       render :new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-  
+    @user = current_user
   end
 
   def index

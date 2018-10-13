@@ -12,7 +12,6 @@ module Api
       def update
         user = User.find(params[:id])
         user.update(email: params[:email])
-        render json: User.find(params[:id])
       end
     end
   end

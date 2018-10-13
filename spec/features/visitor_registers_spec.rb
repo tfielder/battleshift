@@ -12,12 +12,12 @@ describe 'as a guest user' do
   # Then I should be on "/register"
     expect(current_path).to eq('/register')
   # And when I fill in an email address (required)
-    fill_in "email", with: email
+    fill_in "user[email]", with: email
   # And I fill in name (required)
-    fill_in "name", with: name
+    fill_in "user[name]", with: name
   # And I fill in password and password confirmation (required)
-    fill_in "password", with: password
-    fill_in "password_confirmation", with: password
+    fill_in "user[password]", with: password
+    fill_in "user[password_confirmation]", with: password
   # And I click submit
     click_on "Submit"
   # Then I should be redirected to "/dashboard"

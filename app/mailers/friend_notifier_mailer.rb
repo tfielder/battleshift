@@ -1,2 +1,0 @@
-class FriendNotifierMailer < ApplicationMailer
-end

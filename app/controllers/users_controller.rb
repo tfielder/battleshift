@@ -12,7 +12,8 @@ class UsersController < ApplicationController
       UserMailer.account_activation(user).deliver_now
       redirect_to "/dashboard"
     else
-      render :new
+      flash[:notice] = "Something went wrong, please try again."
+      redirect_to "/register"
     end
   end
 
@@ -20,6 +21,8 @@ class UsersController < ApplicationController
     @user = current_user
     if !@user.activated?
       flash[:notice] = "This account has not yet been activated. Please check your email." if !@user.activated?
+    else
+      flash[:notice] = "Welcome again." 
     end
   end
 

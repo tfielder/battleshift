@@ -7,7 +7,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     it "renders the headers" do
       expect(mail.subject).to eq("Battleshift Account Activation")
-      expect(mail.to).to eq(["@example.org"])
+      expect(mail.to).to eq(["to@example.org"])
       expect(mail.from).to eq(["from@example.com"])
     end
 

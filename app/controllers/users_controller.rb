@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      user.send_activation_email
       session[:user_id] = user.id
       UserMailer.account_activation(user).deliver_now
       redirect_to "/dashboard"

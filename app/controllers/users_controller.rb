@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
+    user = User.new(user_params)
+    if user.save
+      user.send_activation_email
+      session[:user_id] = user.id
+      UserMailer.account_activation(user).deliver_now
       redirect_to "/dashboard"
     else
       render :new
@@ -16,6 +18,9 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+    if !@user.activated?
+      flash[:notice] = "This account has not yet been activated. Please check your email." if !@user.activated?
+    end
   end
 
   def index

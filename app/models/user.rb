@@ -19,6 +19,12 @@ def User.new_token
   SecureRandom.urlsafe_base64
 end
 
+def authenticated?(token)
+  digest = send("activation_digest")
+  return false if digest.nil?
+  BCrypt::Password.new(digest).is_password?(token)
+end
+
 private
   def create_activation_digest
     self.activation_token = User.new_token

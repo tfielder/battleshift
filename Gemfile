@@ -28,8 +28,8 @@ end
 
 group :test do
   gem 'simplecov'
-  gem 'vcr'
   gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

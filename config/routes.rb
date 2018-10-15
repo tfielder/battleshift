@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # post '/register', to: "users#create"
   get '/dashboard', to: "users#dashboard"
   get '/login', to: "users#login"
+  post '/login', to: "sessions#create"
 
   namespace :api do
     namespace :v1 do

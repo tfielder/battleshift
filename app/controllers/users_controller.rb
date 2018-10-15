@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
     # if params[:email] && params[:password]
     #   if User.find_by(:email).id == User.find_by(:password).id
     #     @user = current_user

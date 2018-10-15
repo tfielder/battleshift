@@ -22,9 +22,9 @@ feature "user can edit a user's information" do
 
     click_on("Save")
 
-    json_response = File.open("./fixtures/all_users_edited.json")
-    stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
-      to_return(status: 200, body: json_response)
+    # json_response = File.open("./fixtures/all_users_edited.json")
+    # stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
+    #   to_return(status: 200, body: json_response)
     # Then I should be on "/users"
     expect(current_path).to eq("/users")
     # And I should see a flash message that says "Successfully updated Josiah Bartlet."

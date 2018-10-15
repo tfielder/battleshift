@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'as an activated user' do
   it 'allows a user to create a game with valid email and API key' do
     #create 2 users and activate
-    #player_1 = User.create(name: , email: , password: , activated: true, api_key: )
-    player_1.
+    #player_1 = User.create(name: , email: , password: , activated: true, identity_token: )
+    #player_1 = User.create(name: , email: , password: , activated: true, identity_token: )
 
     #player_2 =
     #visit '/dashboard'

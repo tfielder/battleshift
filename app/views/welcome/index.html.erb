@@ -1,19 +1,5 @@
 <h1>Welcome!</h1>
 
-<%= form_tag('/dashboard', method: :get) do %>
-  <p>
-    Enter your information here to log in:
-  </p>
-  <br  />
-  <%= label_tag :email %>
-  <%= text_field_tag "email" %>
-  <br />
-  <%= label_tag :password %>
-  <%= text_field_tag "password" %>
-  <br />
-
-  <%= submit_tag "Save" %>
-<% end %>
-
-<br />
 <%= link_to "Register", register_path %>
+<br />
+<%= link_to "Login", login_path %>

@@ -14,6 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'byebug'
+require 'database_cleaner'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -28,6 +29,17 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
+    end
+
+    config.around(:each) do |example|
+        DatabaseCleaner.cleaning do
+        example.run
+      end
+    end
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
@@ -94,5 +106,6 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
 =end
 end

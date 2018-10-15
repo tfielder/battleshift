@@ -1,3 +1,12 @@
 <h1>Welcome!</h1>
 
+<%= form_tag("/users/#{params[:id]}", method: :get) do %>
+  <%= text_field_tag "email" %>
+
+
+  <%= submit_tag "Save" %>
+<% end %>
+
+
+<br />
 <%= link_to "Register", register_path %>

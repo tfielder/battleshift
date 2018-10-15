@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature "visitor can see an individual user's information" do
   scenario "by accessing URI" do
-    VCR.use_cassette("one_user") do
+    json_response = File.open("./fixtures/user_id_one.json")
+    stub_request(:get, "http://localhost:3000/api/v1/users/1").
+      to_return(status: 200, body: json_response)
     # As a guest user
     # When I visit "/users/1"
     visit "/users/1"
@@ -10,7 +12,6 @@ feature "visitor can see an individual user's information" do
     expect(page).to have_content("Josiah Bartlet")
     # And I should see the user's email address jbartlet@example.com
     expect(page).to have_content("jbarlet@example.com")
-    end
   end
 end
 

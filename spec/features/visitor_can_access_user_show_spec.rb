@@ -12,6 +12,7 @@ feature "visitor can see an individual user's information" do
     expect(page).to have_content("jbarlet@example.com")
     end
   end
+  
 end
 
 feature "visitor can see all users and their information" do

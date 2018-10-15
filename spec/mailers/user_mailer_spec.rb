@@ -12,20 +12,9 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(mail.body.encoded).to have_content("Be sure to save this API key to register a game of Battleshift:")
+      expect(mail.body.encoded).to have_content("Welcome to Battleshift!")
+      expect(mail.body.encoded).to have_content("Click on the link to activate your account:")
     end
   end
-  # describe "password_reset" do
-  #   let(:mail) { UserMailer.password_reset }
-  #
-  #   it "renders the headers" do
-  #     expect(mail.subject).to eq("Password reset")
-  #     expect(mail.to).to eq(["to@example.org"])
-  #     expect(mail.from).to eq(["from@example.com"])
-  #   end
-  #
-  #   it "renders the body" do
-  #     expect(mail.body.encoded).to match("Hi")
-  #   end
-  # end
 end

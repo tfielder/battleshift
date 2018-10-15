@@ -13,7 +13,7 @@ describe 'as an activated user' do
     fill_in "user[email]", with: email
     fill_in "user[password]", with: password
     click_on "Login"
-    #click_on "create game"a
+    #click_on "create game"
     click_on "Create Game"
     #expect(current_path).to eq('game/new')
     expect(current_path).to eq('game/new')

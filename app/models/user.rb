@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 attr_accessor :activation_token
+attr_accessor :identity_token
 before_create :create_activation_digest
+before_create :create_identity_token
 before_save :downcase_email
 
 validates :name, presence: true
@@ -32,7 +34,11 @@ end
 def activate
    update_attribute(:activated,    true)
    update_attribute(:activated_at, Time.zone.now)
- end
+end
+
+def create_identity_token
+  @identity_token = User.new_token
+end
 
 private
   def create_activation_digest

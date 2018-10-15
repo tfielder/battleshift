@@ -1,7 +1,11 @@
 
 <%= @greeting %>,
 
-Welcome to Battleshift!  Click on the link to activate your account:
+Welcome to Battleshift!
+
+Be sure to save this API key to register a game of Battleshift: <%= @user.identity_token %>
+
+Click on the link to activate your account:
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
 

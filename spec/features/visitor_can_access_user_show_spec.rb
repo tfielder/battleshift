@@ -8,7 +8,6 @@ feature "visitor can see an individual user's information" do
     visit "/users/1"
     # Then I should see the user's name Josiah Bartlet
     expect(page).to have_content("Josiah Bartlet")
-    # And I should see the user's email address jbartlet@example.com
     expect(page).to have_content("jbarlet@example.com")
     end
   end

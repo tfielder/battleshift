@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature "user can edit a user's information" do
   scenario "by using user edit form" do
-    json_response = File.open("./fixtures/all_users.json")
-    stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
-      to_return(status: 200, body: json_response)
+    # json_response = File.open("./fixtures/all_users.json")
+    # stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
+    #   to_return(status: 200, body: json_response)
+
     # As a guest user
     # When I visit "/users"
     visit "/users"
@@ -15,9 +16,9 @@ feature "user can edit a user's information" do
     # When I fill in the email field with "josiah@example.com"
     fill_in "email", with: "crazy@gmail.com"
     # And I click "Save"
-    json_response = File.open("./fixtures/user_id_one.json")
-    stub_request(:patch, "https://young-tundra-64543.herokuapp.com/api/v1/users/1").
-      to_return(status: 200, body: json_response)
+    # json_response = File.open("./fixtures/user_id_one.json")
+    # stub_request(:patch, "https://young-tundra-64543.herokuapp.com/api/v1/users/1").
+      # to_return(status: 200, body: json_response)
 
     click_on("Save")
 

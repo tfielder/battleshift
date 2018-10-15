@@ -3,16 +3,5 @@
 <%= link_to "Register", register_path %>
 
 <br />
-<br />
-<%= form_tag login_path do %>
-  <p>
-    Login Here:
-  </p>
-  <%= label_tag :Email %>
-  <%= text_field_tag "email" %>
-  <br />
-  <br />
-  <%= label_tag :Password %>
-  <%= text_field_tag "password" %>
-  <%= submit_tag "Login" %>
-<% end %>
+<%= link_to "Login", login_path %>
+

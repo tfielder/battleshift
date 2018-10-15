@@ -38,7 +38,7 @@ end
 
 def create_identity_digest
   self.identity_token = User.new_token
-  self.identity_digest = User.digest(identity_token)
+  #self.identity_digest = User.digest(identity_token)
 end
 
 private

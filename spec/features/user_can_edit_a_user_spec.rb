@@ -15,7 +15,6 @@ feature "user can edit a user's information" do
     expect(current_path).to eq("/users/1/edit")
     # When I fill in the email field with "josiah@example.com"
     fill_in "email", with: "crazy@gmail.com"
-    fill_in "password", with: "1234"
     # And I click "Save"
     # json_response = File.open("./fixtures/user_id_one.json")
     # stub_request(:patch, "https://young-tundra-64543.herokuapp.com/api/v1/users/1").

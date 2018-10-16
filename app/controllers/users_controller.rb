@@ -66,6 +66,8 @@ class UsersController < ApplicationController
     @user = response.fetch_one_user_data
     url.patch("api/v1/users/#{@user[:id]}", {email: params[:email]})
     redirect_to('/users')
+    
+
     flash[:notice] = "Successfully updated #{@user[:name]}"
   end
 
@@ -75,4 +77,3 @@ class UsersController < ApplicationController
     end
 
 end
-

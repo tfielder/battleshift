@@ -11,6 +11,10 @@ module Api
         #   render json: game
         # end
       end
+
+      def create
+        
+      end
     end
   end
 end

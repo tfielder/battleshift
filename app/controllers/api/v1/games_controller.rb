@@ -4,16 +4,16 @@ module Api
       def show
         game = Game.find(params[:id])
         render json: game
-        # if Game.find_by_id(params[:id]) == nil
-        #   render file: "public/404"
-        # else
-        #   game = Game.find(params[:id])
-        #   render json: game
-        # end
       end
 
       def create
-        
+        game_attributes = {player_1_board: Board.new(4),
+                           player_2_board: Board.new(4),
+                           player_1_turns: 0,
+                           player_2_turns: 0,
+                           current_turn: "challenger"
+                          }
+        game = Game.create(game_attributes)
       end
     end
   end

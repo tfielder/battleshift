@@ -20,17 +20,17 @@ describe 'as an activated user' do
     click_on "Login"
 
     expect(current_path).to eq(dashboard_path)
+    #fill_in "API key", with: player_1.api_key
+    fill_in "api_key", with: player_1.identity_token
+    #fill_in "Player_2 email", with: player_2.email
+    fill_in "opponent_email", with: player_2.email
+    #expect(page).to have_content("Opponent's email:")
+    expect(page).to have_content("Your Opponent's Email:")
+    #expect(page).to have_content("Your API key")
+    expect(page).to have_content("Your API Key (Check Your Registration Email)")
     #click_on "create game"
     click_on "Create Game"
     #expect(current_path).to eq('game/new')
-    expect(current_path).to eq('game/new')
-    #fill_in "API key", with: player_1.api_key
-    fill_in "API key", with: player_1.identity_token
-    #fill_in "Player_2 email", with: player_2.email
-    fill_in "Player_2 email", with: player_2.email
-    #expect(page).to have_content("Opponent's email:")
-    expect(page).to have_content("Opponent's email:")
-    #expect(page).to have_content("Your API key")
-    expect(page).to have_content("Your API key (check your email)")
+    expect(current_path).to eq('games/')
   end
 end

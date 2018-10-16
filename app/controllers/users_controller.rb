@@ -20,24 +20,18 @@ class UsersController < ApplicationController
 
   def login
 
-    # if #user password User.find()
-    #   #@user = current_user
-    # else
-    #
-    # end
-
   end
 
   def dashboard
-    @user = current_user
-    # if params[:email] && params[:password]
-    #   if User.find_by(:email).id == User.find_by(:password).id
-    #     @user = current_user
-    #   else
-    #     flash[:notice] = "Incorrect credentials, try again"
-    #     redirect_to login_path
-    #   end
-    # end
+    #@user = current_user
+    if params[:email] && params[:password]
+      if User.find_by(:email).id == User.find_by(:password).id
+        @user = current_user
+      else
+        flash[:notice] = "Incorrect credentials, try again"
+        redirect_to login_path
+      end
+    end
     flash[:notice] = "This account has not yet been activated. Please check your email." if !@user.activated?
     flash[:notice] = "Status: Active" if @user.activated?
   end

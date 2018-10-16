@@ -3,16 +3,22 @@ require 'rails_helper'
 describe 'as an activated user' do
   it 'allows a user to create a game with valid email and API key' do
     #create 2 users and activate
-    player_1 = User.create(name: "Samwise", email: "littlehouse@theshire.com", password: "mr.frodo!", activated: true)
-    player_2 = User.create(name: "Frodo", email: "mrunderhill@theshire.com", password: "my!preciouse", activated: true)
+    player_1 = User.create!(name: "Samwise", email: "littlehouse@theshire.com", password: "mr.frodo!", activated: true)
+    player_2 = User.create!(name: "Frodo", email: "mrunderhill@theshire.com", password: "my!preciouse", activated: true)
 
     email = "littlehouse@theshire.com"
     password = "mr.frodo!"
-
     visit '/'
-    fill_in "user[email]", with: email
-    fill_in "user[password]", with: password
+
+    expect(current_path).to eq()
+
     click_on "Login"
+    fill_in "email", with: email
+    fill_in "password", with: password
+
+    click_on "Login"
+
+    expect(current_path).to eq()
     #click_on "create game"
     click_on "Create Game"
     #expect(current_path).to eq('game/new')

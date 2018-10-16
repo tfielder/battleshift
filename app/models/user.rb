@@ -7,9 +7,9 @@ before_save :downcase_email
 
 validates :name, presence: true
 validates :email, uniqueness: true, presence: true
-#validates_presence_of :password, require: true
+# validates_presence_of :password, require: true
 
-#has_secure_password
+has_secure_password
 
 def User.digest(string)
   cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

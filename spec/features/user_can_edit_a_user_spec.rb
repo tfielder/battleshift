@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user can edit a user's information" do
-  xscenario "by using user edit form" do
+  scenario "by using user edit form" do
     # json_response = File.open("./fixtures/all_users.json")
     # stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
     #   to_return(status: 200, body: json_response)
@@ -31,6 +31,5 @@ feature "user can edit a user's information" do
     expect(page).to have_content("Successfully updated Josiah Bartlet")
     # And I should should see Josiah Bartlet's email show up in the list as "josiah@example.com"
     expect(page).to have_content("crazy@gmail.com")
-
   end
 end

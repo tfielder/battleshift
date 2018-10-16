@@ -39,12 +39,14 @@ describe "users api endpoints" do
   end
 
   context "PATCH /api/v1/users/:id" do
-    xit "can edit a user's information" do
+    it "can edit a user's information" do
       cj   = User.create!(name: "C.J. Cregg", id: 111, email: "yoyo@example.com", password: "1234")
 
       patch "/api/v1/users/#{cj.id}", params:  {"email": "cj@gmail.com"}
 
       expect(response.status).to be 200
+
+      get "/api/v1/users/#{cj.id}"
 
       returned_user = JSON.parse(response.body, symbolize_names: true)
       user_email = returned_user[:email]

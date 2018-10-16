@@ -1,3 +1,18 @@
 <h1> Logged in as <%= @user.name %></h1>
 
 <h1> Welcome! </h1>
+
+<p>
+  To create a game fill out the form below:
+</p>
+<br />
+<%= form_tag '/games', method: :post %>
+<%= label_tag "Your Opponent's Email"%>
+<%= text_field_tag "opponent_email"%>
+<br />
+<%= label_tag "Your API Key (Check Your Registration Email)"%>
+<%= text_field_tag "api_key"%>
+<%= submit_tag "Create Game" %>
+
+
+

@@ -23,9 +23,9 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    #@user = current_user
     if params[:email] && params[:password]
-      if User.find_by(:email).id == User.find_by(:password).id
+      if User.find_by(email: params[:email]).id #== User.find_by(:password).id
+        current_user = User.find_by(email: params[:email])
         @user = current_user
       else
         flash[:notice] = "Incorrect credentials, try again"

@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :create, :show, :edit, :update]
   resources :account_activations, only: [:edit]
+  resources :games, only: [:show, :create]
 end

@@ -10,15 +10,16 @@ describe 'as an activated user' do
     password = "mr.frodo!"
     visit '/'
 
-    expect(current_path).to eq()
-
     click_on "Login"
+
+    expect(current_path).to eq(login_path)
+
     fill_in "email", with: email
     fill_in "password", with: password
 
     click_on "Login"
 
-    expect(current_path).to eq()
+    expect(current_path).to eq(dashboard_path)
     #click_on "create game"
     click_on "Create Game"
     #expect(current_path).to eq('game/new')

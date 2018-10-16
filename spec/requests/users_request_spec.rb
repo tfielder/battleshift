@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "users api endpoints" do
   context "GET /api/v1/users" do
-    xit "returns a list of users" do
+    it "returns a list of users" do
       create_list(:user, 2)
 
       get "/api/v1/users"

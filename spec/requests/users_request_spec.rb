@@ -21,7 +21,7 @@ describe "users api endpoints" do
   end
 
   context "GET /api/v1/users/:id" do
-    xit "returns a specific user" do
+    it "returns a specific user" do
       cj   = User.create!(name: "C.J. Cregg", id: 111, email: "2@example.com", password: "1234")
       toby = User.create!(name: "Toby Ziegler", id: 222, email: "3@example.com", password: "1234")
 

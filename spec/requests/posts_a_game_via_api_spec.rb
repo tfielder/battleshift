@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user can start a game' do
-  it 'posts a game through the api' do
+  xit 'posts a game through the api' do
     #create users
     #user_1 = create()
     #create game API token

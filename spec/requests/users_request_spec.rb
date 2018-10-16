@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "users api endpoints" do
   context "GET /api/v1/users" do
-    it "returns a list of users" do
+    xit "returns a list of users" do
       create_list(:user, 2)
 
       get "/api/v1/users"
@@ -21,7 +21,7 @@ describe "users api endpoints" do
   end
 
   context "GET /api/v1/users/:id" do
-    it "returns a specific user" do
+    xit "returns a specific user" do
       cj   = User.create!(name: "C.J. Cregg", id: 111, email: "2@example.com", password: "1234")
       toby = User.create!(name: "Toby Ziegler", id: 222, email: "3@example.com", password: "1234")
 
@@ -39,7 +39,7 @@ describe "users api endpoints" do
   end
 
   context "PATCH /api/v1/users/:id" do
-    it "can edit a user's information" do
+    xit "can edit a user's information" do
       cj   = User.create!(name: "C.J. Cregg", id: 111, email: "yoyo@example.com", password: "1234")
 
       patch "/api/v1/users/#{cj.id}", params:  {"email": "cj@gmail.com"}
@@ -53,7 +53,3 @@ describe "users api endpoints" do
     end
   end
 end
-
-# 0. set up figaro
-# 1. this file - patch test
-# 2. feature test - all api calls stubbed out to heroku link

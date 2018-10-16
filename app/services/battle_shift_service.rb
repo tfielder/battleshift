@@ -2,13 +2,14 @@ class BattleShiftService
   attr_reader :conn
   def initialize(filter)
     @filter = filter
-    @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com") do |faraday|
+    # @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com") do |faraday|
+    @conn = Faraday.new(url: "#{Figaro.env.base_url}") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end
 
   def access_api
-    Faraday.new(url: "https://young-tundra-64543.herokuapp.com")
+    Faraday.new(url: "#{Figaro.env.base_url}")
   end
 
   def get_url(url)

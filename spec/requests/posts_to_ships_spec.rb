@@ -17,7 +17,7 @@ describe 'posts a ship through the api' do
                        current_turn: "challenger"
                       }
 
-    game = Game.new(game_attributes)
+    game = Game.create(game_attributes)
 
     post "/api/v1/games/#{game.id}/ships", params: {email: "#{user_1.email}", api_key: "#{user_2.identity_token}", payload: "#{ship_1_payload}"}
 

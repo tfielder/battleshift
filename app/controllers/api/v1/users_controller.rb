@@ -11,7 +11,9 @@ module Api
 
       def update
         user = User.find(params[:id])
-        user.update(email: params[:email])
+        user.password = user.password_digest
+        updated_user = user.update(email: params[:email])
+        render json: updated_user
       end
     end
   end

@@ -10,8 +10,11 @@ describe 'as an activated user' do
     password = "mr.frodo!"
 
     visit '/'
-    fill_in "user[email]", with: email
-    fill_in "user[password]", with: password
+
+    click_on "Login"
+
+    fill_in "email", with: email
+    fill_in "password", with: password
     click_on "Login"
     #click_on "create game"
     click_on "Create Game"

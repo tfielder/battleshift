@@ -24,15 +24,16 @@ class TurnProcessor
   attr_reader :game, :target
 
   def attack_opponent
+    # binding.pry
     result = Shooter.fire!(board: opponent.board, target: target)
     @messages << "Your shot resulted in a #{result}."
 
-    if @game.current_turn == 0
-      game.player_1_turns += 1
-      game.change_player
-    elsif @game.current_turn == 1
-      game.player_2_turns += 1
-      game.change_player
+    if @game.current_turn == "player_1"
+      @game.player_1_turns += 1
+      @game.change_player
+    elsif @game.current_turn == "player_2"
+      @game.player_2_turns += 1
+      @game.change_player
     end
   end
 
@@ -48,9 +49,9 @@ class TurnProcessor
 
   def opponent
     if @game.current_turn == 0
-      Player.new(game.player_2_board)
-    else
       Player.new(game.player_1_board)
+    else
+      Player.new(game.player_2_board)
     end
   end
 

@@ -16,9 +16,7 @@ module Api
           end
 
           game.save
-          #message = ship_processor_1.message(params[:ship_size])
 
-          #render json: game, message: turn_processor.message
           render json: game, message: message
         end
       end

@@ -48,9 +48,9 @@ class TurnProcessor
 
   def opponent
     if @game.current_turn == 0
-      Player.new(game.player_2_board)
-    else
       Player.new(game.player_1_board)
+    else
+      Player.new(game.player_2_board)
     end
   end
 

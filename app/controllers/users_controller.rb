@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if user.save
       user.send_activation_email
       session[:user_id] = user.id
-      UserMailer.account_activation(user).deliver_now
+    #  UserMailer.account_activation(user).deliver_now
       @current_user = user
       redirect_to "/dashboard"
     else
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:id, :name, :email, :password, :password_confirmation)
     end
 
 end

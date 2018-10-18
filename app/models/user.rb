@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User < ApplicationRecord
 attr_accessor :activation_token
 attr_accessor :identity_token
@@ -37,10 +39,14 @@ def activate
 end
 
 def create_identity_token
-  @identity_token = User.new_token
+  # @identity_token = User.new_token
+  self.identity_token = SecureRandom.urlsafe_base64
+  # self.identity_token = User.new_token
+  # self.identity_digest = User.digest(identity_token)
 end
 
 private
+
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)

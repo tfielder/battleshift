@@ -29,7 +29,6 @@ class TurnProcessor
     @messages << "Your shot resulted in a #{result}."
 
     if @game.current_turn == "player_1"
-      binding.pry
       @game.player_1_turns += 1
       @game.change_player
     elsif @game.current_turn == "player_2"

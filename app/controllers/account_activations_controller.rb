@@ -1,5 +1,6 @@
 class AccountActivationsController < ApplicationController
   def edit
+    binding.pry
     user = User.find_by(email: params[:email])
     @current_user = user
     # if user && !user.activated? && user.authenticated?(:activation, params[:id])

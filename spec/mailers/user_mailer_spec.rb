@@ -6,7 +6,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     let(:mail) { UserMailer.account_activation(user) }
 
-    xit "renders the headers" do
+    it "renders the headers" do
       expect(mail.subject).to eq("Battleshift Account Activation")
       expect(mail.to).to eq(["new@example.org"])
       expect(mail.from).to eq(["from@example.com"])

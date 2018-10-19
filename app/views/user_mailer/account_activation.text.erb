@@ -7,5 +7,6 @@ Be sure to save this API key to register a game of Battleshift: <%= @user.identi
 
 Click on the link to activate your account:
 
-<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= edit_account_activation_url(@user.api_key, email: @user.email) %>
+ 
 

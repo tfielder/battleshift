@@ -14,11 +14,21 @@ module Api
                            current_turn: 0
                           }
         game = Game.create(game_attributes)
-        # game.player_1_api_key = request.headers["X-API-Key"]
-        # player_2 = User.find_by(email: params[:opponent_email]).api_key
-        # game.player_2_api_key = player_2
+        game.player_1_api_key = request.headers["X-API-Key"]
+        # player_2 = User.find_by(email: params[:opponent_email])
+        email = params[:opponent_email]
+        player_2 = User.find_by_email(email)
+        game.player_2_api_key = player_2.api_key
+        #binding.pry
+        game.save
         render json: game
       end
+
+      private
+
+        def paramers
+          params.require(:opponent_email)
+        end
     end
   end
 end

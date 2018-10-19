@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user can edit a user's information" do
-  scenario "by using user edit form" do
+  xscenario "by using user edit form" do
     # json_response = File.open("./fixtures/all_users.json")
     # stub_request(:get, "https://young-tundra-64543.herokuapp.com/api/v1/users").
     #   to_return(status: 200, body: json_response)

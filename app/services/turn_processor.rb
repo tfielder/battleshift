@@ -27,8 +27,18 @@ class TurnProcessor
     result = Shooter.fire!(board: opponent.board, target: target)
     @messages << "Your shot resulted in a #{result}."
 
-    if @messages == "Your shot resulted in a Hit. Battleship sunk. Game over."
-      User.find_by("Api")
+    if @messages.include?("Your shot resulted in a Hit. Battleship sunk. Game over.")
+        if game.current_turn == "player_1"
+          @messages << "Invalid move. Game over."
+          game[:winner] = User.find_by_api_key(game.player_1_api_key).email
+          game[:message] = "Invalid move. Game over."
+          game.save
+        elsif game.current_turn == "player_2"
+          @messages << "Invalid move. Game over."
+          game[:winner] = User.find_by_api_key(game.player_2_api_key).email
+          game[:message] = "Invalid move. Game over."
+          game.save
+        end
     end
 
     if @game.current_turn == "player_1"

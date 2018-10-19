@@ -6,13 +6,15 @@ class UsersController < ApplicationController
 
   def create
 
-    user = User.create(user_params)
-    if user.save
-      user.update(api_key: user.create_api_key)
-      user.send_activation_email
-      session[:user_id] = user.id
+    @user = User.create(user_params)
+    saved = @user.save
+    if saved
+      @user.update(api_key: user.create_api_key)
+      binding.pry
+      @user.send_activation_email
+      session[:user_id] = @user.id
     #  UserMailer.account_activation(user).deliver_now
-      @current_user = user
+      @current_user = @user
       redirect_to "/dashboard"
     else
       flash[:notice] = "Something went wrong, please try again."

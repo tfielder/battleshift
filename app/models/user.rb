@@ -4,6 +4,7 @@ class User < ApplicationRecord
 # attr_accessor :activation_token,
 #               :identity_token,
 #               :api_key
+#attr_reader :api_key
 
 # before_create :create_activation_digest
 # before_create :create_identity_token

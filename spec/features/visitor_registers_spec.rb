@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'as a guest user' do
-  xit 'allows visitor to create a log in' do
+  it 'allows visitor to create a log in' do
     email = "mike@mike.com"
     name = "Mike"
     password = "hamburger1"

@@ -7,7 +7,15 @@ class Shooter
 
   def fire!
     if valid_shot?
-      space.attack!
+      message = space.attack!
+        if message.include?("Hit")
+          @board.add_hit
+            if @board.game_over?
+              message = "Hit. Battleship sunk. Game over"
+            end
+            message
+        end
+      message
     else
       raise InvalidAttack.new("Invalid coordinates.")
     end

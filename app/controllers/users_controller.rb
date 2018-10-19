@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+
+    user = User.create(user_params)
     if user.save
+      user.update(api_key: user.create_api_key)
       user.send_activation_email
       session[:user_id] = user.id
     #  UserMailer.account_activation(user).deliver_now
@@ -72,7 +74,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:id, :name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:id, :name, :email, :password, :password_confirmation, :api_key)
     end
 
 end

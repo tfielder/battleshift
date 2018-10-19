@@ -1,15 +1,18 @@
 require 'securerandom'
 
 class User < ApplicationRecord
-attr_accessor :activation_token
-attr_accessor :identity_token
-before_create :create_activation_digest
-before_create :create_identity_token
-before_save :downcase_email
+# attr_accessor :activation_token,
+#               :identity_token,
+#               :api_key
 
-validates :name, presence: true
-validates :email, uniqueness: true, presence: true
-# validates_presence_of :password, require: true
+# before_create :create_activation_digest
+# before_create :create_identity_token
+# before_save :create_api_key
+# before_save :downcase_email
+
+# validates :name, presence: true
+#validates :email, uniqueness: true, presence: true
+# validates :password, presence: true
 
 has_secure_password
 
@@ -21,6 +24,10 @@ end
 
 def User.new_token
   SecureRandom.urlsafe_base64
+end
+
+def create_api_key #before
+  self.api_key = SecureRandom.urlsafe_base64
 end
 
 def authenticated?(token)
@@ -52,7 +59,7 @@ private
     self.activation_digest = User.digest(activation_token)
   end
 
-  def downcase_email
-    email.downcase!
-  end
+  # def downcase_email
+  #   email.downcase!
+  # end
 end

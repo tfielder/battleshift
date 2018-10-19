@@ -21,4 +21,14 @@ class Ship
   def is_sunk?
     @damage == @length
   end
+
+  # def ship_type
+  #   if
+  #     @length == 3
+  #     "Battleship"
+  #   else
+  #     @length == 2
+  #     "Battleship"
+  #   end
+  # end
 end

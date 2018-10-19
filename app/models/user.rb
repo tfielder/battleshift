@@ -1,14 +1,18 @@
 require 'securerandom'
 
 class User < ApplicationRecord
-attr_accessor :activation_token
-attr_accessor :identity_token
+attr_accessor :activation_token,
+              :identity_token,
+              :api_key
+
 before_create :create_activation_digest
 before_create :create_identity_token
+before_create :create_api_key
 before_save :downcase_email
 
 validates :name, presence: true
 validates :email, uniqueness: true, presence: true
+#validates :api_key, uniqueness: true, presence: true
 # validates_presence_of :password, require: true
 
 has_secure_password
@@ -21,6 +25,11 @@ end
 
 def User.new_token
   SecureRandom.urlsafe_base64
+end
+
+def create_api_key
+  r = Random.new
+  @api_key = r.rand(1..100000)
 end
 
 def authenticated?(token)

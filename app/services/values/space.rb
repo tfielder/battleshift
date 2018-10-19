@@ -11,7 +11,7 @@ class Space
     @status = if contents && not_attacked?
                 contents.attack!
                 if contents.is_sunk?
-                  "Your shot resulted in a Hit. Battleship sunk."
+                  "Hit. Battleship sunk"
                 else
                   "Hit"
                 end

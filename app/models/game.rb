@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  attr_accessor :messages
+  attr_accessor :messages, :winner
 
   # enum current_turn: ["challenger", "computer"]
   enum current_turn: ["player_1", "player_2"]

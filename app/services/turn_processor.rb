@@ -24,9 +24,12 @@ class TurnProcessor
   attr_reader :game, :target
 
   def attack_opponent
-    # binding.pry
     result = Shooter.fire!(board: opponent.board, target: target)
     @messages << "Your shot resulted in a #{result}."
+
+    if @messages == "Your shot resulted in a Hit. Battleship sunk. Game over."
+      User.find_by("Api")
+    end
 
     if @game.current_turn == "player_1"
       @game.player_1_turns += 1

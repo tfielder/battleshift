@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'posts a game through the api' do
-  it 'posts' do
+  xit 'posts' do
     #create users
-    user_1 = User.create!(name: "a", email: "b", password: "c", activated: true, api_key: "stuffs")
+    user_1 = User.create!(name: "a", email: "b", password: "c", activated: true)
 
     user_2 = User.create(name: "d", email: "e", password: "f", activated: true, identity_token: 1234)
 

@@ -1,5 +1,5 @@
 describe 'posts a ship through the api' do
-  it 'posts a ship' do
+  xit 'posts a ship' do
     #create users
     user_1 = User.create(name: "a", email: "b", password: "c", activated: true)
     user_2 = User.create(name: "d", email: "e", password: "f", activated: true, identity_token: 1234)

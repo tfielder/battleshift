@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     saved = @user.save
     if saved
       @user.update(api_key: user.create_api_key)
-      binding.pry
       @user.send_activation_email
       session[:user_id] = @user.id
     #  UserMailer.account_activation(user).deliver_now
@@ -20,16 +19,6 @@ class UsersController < ApplicationController
       flash[:notice] = "Something went wrong, please try again."
       redirect_to "/register"
     end
-  end
-
-  def login
-
-    # if #user password User.find()
-    #   #@user = current_user
-    # else
-    #
-    # end
-
   end
 
   def dashboard

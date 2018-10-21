@@ -3,7 +3,7 @@ class BattleShiftService
   def initialize(filter)
     @filter = filter
     # @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com") do |faraday|
-    @conn = Faraday.new(url: "#{Figaro.env.base_url}") do |faraday|
+    @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com/") do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

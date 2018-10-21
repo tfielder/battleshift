@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def index
     results = UserResults.new
-    results = results.all_users
+    @users_results = results.all_users
     # @users_results = results.sort_by {|user| user.id}
   end
 

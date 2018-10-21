@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.create(user_params)
     saved = @user.save
     if saved
@@ -39,7 +38,7 @@ class UsersController < ApplicationController
   def index
     results = UserResults.new
     results = results.all_users
-    @users_results = results.sort_by {|user| user.id}
+    # @users_results = results.sort_by {|user| user.id}
   end
 
   def show

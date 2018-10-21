@@ -4,6 +4,8 @@ class BattleShiftService
     @filter = filter
     # @conn = Faraday.new(url: "https://young-tundra-64543.herokuapp.com") do |faraday|
     @conn = Faraday.new(url: ENV["base_url"]) do |faraday|
+      faraday.request :url_encoded
+      faraday.response :logger
       faraday.adapter Faraday.default_adapter
     end
   end

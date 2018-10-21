@@ -9,7 +9,7 @@ class BattleShiftService
   end
 
   def access_api
-    Faraday.new(url: "#{Figaro.env.base_url}")
+    Faraday.new(url: "https://young-tundra-64543.herokuapp.com")
   end
 
   def get_url(url)

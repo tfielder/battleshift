@@ -19,7 +19,6 @@ module Api
         email = params[:opponent_email]
         player_2 = User.find_by_email(email)
         game.player_2_api_key = player_2.api_key
-        #binding.pry
         game.save
         render json: game
       end

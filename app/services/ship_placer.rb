@@ -60,12 +60,4 @@ class ShipPlacer
       space.occupy!(ship)
     end
   end
-
-
-end
-
-class InvalidShipPlacement < StandardError
-  def initialize(msg = "Invalid ship placement")
-    super
-  end
 end

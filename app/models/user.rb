@@ -1,19 +1,6 @@
 require 'securerandom'
 
 class User < ApplicationRecord
-# attr_accessor :activation_token,
-#               :identity_token,
-#               :api_key
-#attr_reader :api_key
-
-# before_create :create_activation_digest
-# before_create :create_identity_token
-# before_save :create_api_key
-# before_save :downcase_email
-
-# validates :name, presence: true
-#validates :email, uniqueness: true, presence: true
-# validates :password, presence: true
 
 has_secure_password
 
@@ -27,7 +14,7 @@ def User.new_token
   SecureRandom.urlsafe_base64
 end
 
-def create_api_key #before
+def create_api_key
   self.api_key = SecureRandom.urlsafe_base64
 end
 
@@ -47,10 +34,7 @@ def activate
 end
 
 def create_identity_token
-  # @identity_token = User.new_token
   self.identity_token = SecureRandom.urlsafe_base64
-  # self.identity_token = User.new_token
-  # self.identity_digest = User.digest(identity_token)
 end
 
 private
@@ -59,8 +43,4 @@ private
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
-
-  # def downcase_email
-  #   email.downcase!
-  # end
 end

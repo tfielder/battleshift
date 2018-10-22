@@ -13,9 +13,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       @current_user = @user
       redirect_to "/dashboard"
-    else
-      flash[:notice] = "Something went wrong, please try again."
-      redirect_to "/register"
+    # else
+    #   flash[:notice] = "Something went wrong, please try again."
+    #   redirect_to "/register"
     end
   end
 

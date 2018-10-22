@@ -15,5 +15,16 @@ describe BattleShiftService do
         expect(users[1][:email]).to eq("bj@example.com")
       end
     end
+      it "finds one user" do
+        VCR.use_cassette("one_user_api") do
+
+          @filter = 1
+          api = BattleShiftService.new(@filter)
+          users = api.fetch_one_user_data
+
+          expect(users[:name]).to eq("Josiah Bartlet")
+          expect(users[:email]).to eq("crazy@gmail.com")
+        end
+      end
   end
 end

@@ -2,7 +2,6 @@ class AccountActivationsController < ApplicationController
   def edit
     @user = User.find_by(email: params[:email])
     @current_user = @user
-    # if user && !user.activated? && user.authenticated?(:activation, params[:id])
     if @user && !@user.activated? && @user.authenticated?(params[:id])
       @user.activate
       @user.update_attribute(:activated,    true)

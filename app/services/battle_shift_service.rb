@@ -23,19 +23,19 @@ class BattleShiftService
     get_url("/api/v1/users")
   end
 
-  def self.fetch_users_data
-    new.fetch_users_data
-  end
+  # def self.fetch_users_data
+  #   new.fetch_users_data
+  # end
 
   def fetch_one_user_data
     get_url("/api/v1/users/#{@filter}")
   end
 
-  def self.fetch_one_user_data
-    new.fetch_one_user_data
-  end
+  # def self.fetch_one_user_data
+  #   new.fetch_one_user_data
+  # end
 
-  def self.update_user
-    new.patch("/api/v1/users/#{@filter}")
-  end
+  # def self.update_user
+  #   new.patch("/api/v1/users/#{@filter}")
+  # end
 end

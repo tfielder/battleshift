@@ -28,10 +28,7 @@ class Space
     !!@contents
   end
 
-  #if @contents == ship
-
   def not_attacked?
     status == "Not Attacked"
   end
 end
-

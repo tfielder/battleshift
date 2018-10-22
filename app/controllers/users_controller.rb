@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       @user.update(api_key: @user.create_api_key)
       @user.send_activation_email
       session[:user_id] = @user.id
-    #  UserMailer.account_activation(user).deliver_now
       @current_user = @user
       redirect_to "/dashboard"
     else
@@ -22,14 +21,6 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    # if params[:email] && params[:password]
-    #   if User.find_by(:email).id == User.find_by(:password).id
-    #     @user = current_user
-    #   else
-    #     flash[:notice] = "Incorrect credentials, try again"
-    #     redirect_to login_path
-    #   end
-    # end
     flash[:notice] = "This account has not yet been activated. Please check your email." if !@user.activated?
     flash[:notice] = "Status: Active" if @user.activated?
   end

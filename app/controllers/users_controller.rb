@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     saved = @user.save
     if saved
-      @user.update(api_key: user.create_api_key)
+      @user.update(api_key: @user.create_api_key)
       @user.send_activation_email
       session[:user_id] = @user.id
       @current_user = @user
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
 
   def index
     results = UserResults.new
-    @users_results = results.all_users
+    results_1 = results.all_users
+    @users_results = results_1.sort_by {|user| user.id}
   end
 
   def show

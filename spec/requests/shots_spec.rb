@@ -12,8 +12,8 @@ describe "Api::V1::Shots" do
       )
     }
 
-    xit "updates the message and board with a hit" do
-      allow_any_instance_of(AiSpaceSelector).to receive(:fire!).and_return("Miss")
+    it "updates the message and board with a hit" do
+      # allow_any_instance_of(AiSpaceSelector).to receive(:fire!).and_return("Miss")
       ShipPlacer.new(board: player_2_board,
                      ship: sm_ship,
                      start_space: "A1",
@@ -28,7 +28,7 @@ describe "Api::V1::Shots" do
 
       game = JSON.parse(response.body, symbolize_names: true)
 
-      expected_messages = "Your shot resulted in a Hit. The computer's shot resulted in a Miss."
+      expected_messages = "Your shot resulted in a Hit."
       player_2_targeted_space = game[:player_2_board][:rows].first[:data].first[:status]
 
 
@@ -36,8 +36,8 @@ describe "Api::V1::Shots" do
       expect(player_2_targeted_space).to eq("Hit")
     end
 
-    xit "updates the message and board with a miss" do
-      allow_any_instance_of(AiSpaceSelector).to receive(:fire!).and_return("Miss")
+    it "updates the message and board with a miss" do
+      # allow_any_instance_of(AiSpaceSelector).to receive(:fire!).and_return("Miss")
 
       headers = { "CONTENT_TYPE" => "application/json" }
       json_payload = {target: "A1"}.to_json
@@ -48,7 +48,7 @@ describe "Api::V1::Shots" do
 
       game = JSON.parse(response.body, symbolize_names: true)
 
-      expected_messages = "Your shot resulted in a Miss. The computer's shot resulted in a Miss."
+      expected_messages = "Your shot resulted in a Miss."
       player_2_targeted_space = game[:player_2_board][:rows].first[:data].first[:status]
 
 

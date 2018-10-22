@@ -3,7 +3,11 @@ module Api
     class GamesController < ActionController::API
       def show
         game = Game.find(params[:id])
-        render json: game
+        if game
+          render json: game
+        else
+          render
+        end
       end
 
       def create

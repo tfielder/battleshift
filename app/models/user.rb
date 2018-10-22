@@ -34,6 +34,7 @@ end
 def authenticated?(token)
   digest = send("activation_digest")
   return false if digest.nil?
+  binding.pry
   BCrypt::Password.new(digest).is_password?(token)
 end
 
@@ -46,12 +47,12 @@ def activate
    update_attribute(:activated_at, Time.zone.now)
 end
 
-def create_identity_token
-  # @identity_token = User.new_token
-  self.identity_token = SecureRandom.urlsafe_base64
-  # self.identity_token = User.new_token
-  # self.identity_digest = User.digest(identity_token)
-end
+# def create_identity_token
+#   # @identity_token = User.new_token
+#   self.identity_token = SecureRandom.urlsafe_base64
+#   # self.identity_token = User.new_token
+#   # self.identity_digest = User.digest(identity_token)
+# end
 
 private
 

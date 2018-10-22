@@ -60,8 +60,6 @@ class ShipPlacer
       space.occupy!(ship)
     end
   end
-
-
 end
 
 class InvalidShipPlacement < StandardError

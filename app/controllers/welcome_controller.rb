@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   def index
 
   end
+
   # def login
   #
   #   if 1 == 1
@@ -12,4 +13,6 @@ class WelcomeController < ApplicationController
   #     redirect_to '/'
   #   end
   # end
+
+
 end

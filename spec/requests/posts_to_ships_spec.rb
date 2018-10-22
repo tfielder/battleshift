@@ -1,8 +1,11 @@
+require 'rails_helper'
+
 describe 'posts a ship through the api' do
-  xit 'posts a ship' do
+  it 'posts a ship' do
     #create users
-    user_1 = User.create(name: "a", email: "b", password: "c", activated: true)
-    user_2 = User.create(name: "d", email: "e", password: "f", activated: true, identity_token: 1234)
+    user_1 = User.create!(name: "a", email: "b", password: "c", activated: true, api_key: "1111aaaa")
+
+    user_2 = User.create!(name: "d", email: "e", password: "f", activated: true, api_key: "2222bbbb")
 
     ship_1_payload = {
       ship_size: 3,
@@ -21,7 +24,7 @@ describe 'posts a ship through the api' do
 
     #note need to update the payload/params perhaps so that it resembles that of the spec harness.
 
-    post "/api/v1/games/#{game.id}/ships", params: {email: "#{user_1.email}", api_key: "#{user_2.identity_token}", payload: "#{ship_1_payload}"}
+    post "/api/v1/games", params: {opponent_email: "#{user_2.email}", api_key: "#{user_1.api_key}" }, headers: { 'X-API-Key' => user_1.api_key }
 
     expect(response).to be_successful
   end

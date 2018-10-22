@@ -21,7 +21,6 @@ end
 def authenticated?(token)
   digest = send("activation_digest")
   return false if digest.nil?
-  binding.pry
   BCrypt::Password.new(digest).is_password?(token)
 end
 

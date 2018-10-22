@@ -22,5 +22,6 @@ describe User do
 
       expect(key.length).to eq(22)
     end
+    
   end
 end

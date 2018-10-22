@@ -51,15 +51,15 @@ end
 #   # @identity_token = User.new_token
 #   self.identity_token = SecureRandom.urlsafe_base64
 #   # self.identity_token = User.new_token
-#   # self.identity_digest = User.digest(identity_token)
+#   # self.identity_digest = Usxer.digest(identity_token)
 # end
 
 private
 
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
-  end
+  # def create_activation_digest
+  #   self.activation_token = User.new_token
+  #   self.activation_digest = User.digest(activation_token)
+  # end
 
   # def downcase_email
   #   email.downcase!

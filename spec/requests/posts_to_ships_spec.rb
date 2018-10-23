@@ -22,15 +22,23 @@ describe 'posts a ship through the api' do
     game = Game.create(game_attributes)
 
     post "/api/v1/games", params: {opponent_email: "#{user_2.email}", api_key: "#{user_1.api_key}" }, headers: { 'X-API-Key' => user_1.api_key }
+
     expect(response).to be_successful
     expect(game.current_turn).to eq("player_1")
     expect(game.change_player).to eq("player_2")
+
+    post "/api/v1/games", params: {opponent_email: "#{user_1.email}", api_key: "#{user_2.api_key}" }, headers: { 'X-API-Key' => user_2.api_key }
+
+    expect(response).to be_successful
+    expect(game.current_turn).to eq("player_2")
+    # expect(game.change_player).to eq("player_1")
+
     # endpoint = "/api/v1/games/#{game.id}/shots"
-    # payload = {target: "A1"}.to_json
-    # headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => user_1.api_key  }
+    payload = {target: "A1"}.to_json
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => user_1.api_key  }
     #
-    # response = post "/api/v1/games/#{game.id}/shots", params: payload, headers: headers
-    #
-    # expect(response).to be_successful
+    response = post "/api/v1/games/#{game.id}/shots", params: payload, headers: headers
+binding.pry
+    expect(response).to be_successful
    end
 end

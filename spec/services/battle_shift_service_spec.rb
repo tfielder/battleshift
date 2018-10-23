@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe BattleShiftService do
   describe "users" do
-    xit "finds all users" do
+    it "finds all users" do
       VCR.use_cassette("all_users_api") do
 
         api = BattleShiftService.new(@filter)

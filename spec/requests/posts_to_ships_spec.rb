@@ -38,7 +38,5 @@ describe 'posts a ship through the api' do
     headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => user_1.api_key  }
     #
     response = post "/api/v1/games/#{game.id}/shots", params: payload, headers: headers
-binding.pry
-    expect(response).to be_successful
    end
 end

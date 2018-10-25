@@ -86,5 +86,29 @@ describe "Api::V1::Shots" do
       expect(response.status).to eq 400
     end
 
+    it "updates the message and board with a hit for player_2" do
+      ShipPlacer.new(board: player_1_board,
+                     ship: sm_ship,
+                     start_space: "A1",
+                     end_space: "A2").run
+
+      headers = { "CONTENT_TYPE" => "application/json" }
+      json_payload = {target: "A1"}.to_json
+      game.update(current_turn: "player_2")
+
+      post "/api/v1/games/#{game.id}/shots", params: json_payload, headers: headers
+
+      expect(response).to be_success
+
+      game = JSON.parse(response.body, symbolize_names: true)
+
+      expected_messages = "Your shot resulted in a Hit."
+      player_1_targeted_space = game[:player_1_board][:rows].first[:data].first[:status]
+
+
+      expect(game[:message]).to eq expected_messages
+      expect(player_1_targeted_space).to eq("Hit")
+    end
+
   end
 end

@@ -8,7 +8,8 @@ describe 'as a user clicking on the link to activate account' do
 
     params = {email: user_1.email}
 
-    visit edit_account_activation_url(user_1.id), params
+    get "account_activations/#{user_1.id}/edit", params
+    # edit_account_activation_url(user_1.id), params
 
     expect(response).to be_successful
     #visit edit_account_activation_url(user_1.id), params[:email] = "b"

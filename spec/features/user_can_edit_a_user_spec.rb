@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user can edit a user's information" do
-  xit "by using user edit form" do
+  it "by using user edit form" do
 
     visit "/users"
     # And I click on `Edit` for Josiah Bartlet

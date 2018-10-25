@@ -6,5 +6,7 @@ FactoryBot.define do
     player_1_turns 0
     player_2_turns 0
     current_turn 0
+    player_1_api_key {"aaaa"}
+    player_2_api_key {"bbbb"}
   end
 end

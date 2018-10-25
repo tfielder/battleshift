@@ -75,6 +75,21 @@ describe "Api::V1::Shots" do
       expect(game[:message]).to eq "Invalid coordinates"
     end
 
+    it "updates the message but not the board with invalid coordinates" do
+      player_1_board = Board.new(1)
+      player_2_board = Board.new(1)
+      game = create(:game, player_1_board: player_1_board, player_2_board: player_2_board)
+      game.update(current_turn: "player_2")
+      headers = { "CONTENT_TYPE" => "application/json",
+                  "X-API-Key" => "bbbb"
+                }
+      json_payload = {target: "B6"}.to_json
+      post "/api/v1/games/#{game.id}/shots", params: json_payload, headers: headers
+
+      game = JSON.parse(response.body, symbolize_names: true)
+      expect(game[:message]).to eq "Invalid coordinates"
+    end
+
     it "updates the message when player_2 attempts to move after player_1 won" do
       player_1_board = Board.new(1)
       player_2_board = Board.new(1)

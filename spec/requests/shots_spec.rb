@@ -75,7 +75,7 @@ describe "Api::V1::Shots" do
       expect(game[:message]).to eq "Invalid coordinates"
     end
 
-    it "updates the message but not the board with invalid coordinates" do
+    it "updates the message but not the board with invalid coordinates from player 2" do
       player_1_board = Board.new(1)
       player_2_board = Board.new(1)
       game = create(:game, player_1_board: player_1_board, player_2_board: player_2_board)
@@ -131,6 +131,21 @@ describe "Api::V1::Shots" do
 
       expect(game[:message]).to eq expected_messages
       expect(player_1_targeted_space).to eq("Hit")
+    end
+
+    it "unauthorized attempt to make turn" do
+      player_1_board = Board.new(1)
+      player_2_board = Board.new(1)
+      game = create(:game, player_1_board: player_1_board, player_2_board: player_2_board)
+      game.update(current_turn: "player_2")
+      headers = { "CONTENT_TYPE" => "application/json",
+                  "X-API-Key" => "aaaa"
+                }
+      json_payload = {target: "B6"}.to_json
+      post "/api/v1/games/#{game.id}/shots", params: json_payload, headers: headers
+
+      game = JSON.parse(response.body, symbolize_names: true)
+      expect(game[:message]).to eq "Unauthorized"
     end
 
   end

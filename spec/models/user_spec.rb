@@ -16,7 +16,6 @@ describe User do
       expect(user_1.activated?).to be(true)
     end
   end
-end
   it "exists" do
     user = User.new
 
@@ -38,6 +37,6 @@ end
 
       expect(key.length).to eq(22)
     end
-    
+
   end
 end

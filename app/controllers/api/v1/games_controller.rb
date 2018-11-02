@@ -5,8 +5,6 @@ module Api
         game = Game.find(params[:id])
         if game
           render json: game
-        else
-          render
         end
       end
 
@@ -19,7 +17,7 @@ module Api
                           }
         game = Game.create(game_attributes)
         game.player_1_api_key = request.headers["X-API-Key"]
-        # player_2 = User.find_by(email: params[:opponent_email])
+
         email = params[:opponent_email]
         player_2 = User.find_by_email(email)
         game.player_2_api_key = player_2.api_key

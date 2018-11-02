@@ -4,10 +4,8 @@ describe BattleShiftService do
   describe "users" do
     it "finds all users" do
       VCR.use_cassette("all_users_api") do
-
-        api = BattleShiftService.new(@filter)
+        api = BattleShiftService.new()
         users = api.fetch_users_data
-
         expect(users.count).to eq(4)
         expect(users[0][:name]).to eq("Josiah Bartlet")
         expect(users[0][:email]).to eq("jbarlet@example.com")

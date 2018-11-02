@@ -8,7 +8,6 @@ class UserMailer < ApplicationMailer
   def account_activation(user)
     @greeting = "Hi #{user.name}"
     @user = user
-    # @token = user.identity_token
     mail to: user.email, subject: "Battleshift Account Activation"
   end
 

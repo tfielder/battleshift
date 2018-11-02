@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
+
     flash[:notice] = "This account has not yet been activated. Please check your email." if !@user.activated?
     flash[:notice] = "Status: Active" if @user.activated?
   end

@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 describe 'as a user clicking on the link to activate account' do

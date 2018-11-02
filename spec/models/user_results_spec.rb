@@ -18,6 +18,11 @@ describe UserResults do
 
         expect(user_result.all_users.count).to eq(2)
       end
+      it "returns a random token" do
+        token = User.new_token
+        
+        expect(token.length).to eq(22)
+      end
     end
   end
 end

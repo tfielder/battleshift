@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'posts a ship through the api' do
   it 'posts a ship' do
-    #create users
     user_1 = User.create!(name: "a", email: "b", password: "c", activated: true, api_key: "1111aaaa")
 
     user_2 = User.create!(name: "d", email: "e", password: "f", activated: true, api_key: "2222bbbb")
@@ -22,10 +21,22 @@ describe 'posts a ship through the api' do
 
     game = Game.create(game_attributes)
 
-    #note need to update the payload/params perhaps so that it resembles that of the spec harness.
-
     post "/api/v1/games", params: {opponent_email: "#{user_2.email}", api_key: "#{user_1.api_key}" }, headers: { 'X-API-Key' => user_1.api_key }
 
     expect(response).to be_successful
-  end
+    expect(game.current_turn).to eq("player_1")
+    expect(game.change_player).to eq("player_2")
+
+    post "/api/v1/games", params: {opponent_email: "#{user_1.email}", api_key: "#{user_2.api_key}" }, headers: { 'X-API-Key' => user_2.api_key }
+
+    expect(response).to be_successful
+    expect(game.current_turn).to eq("player_2")
+    # expect(game.change_player).to eq("player_1")
+
+    # endpoint = "/api/v1/games/#{game.id}/shots"
+    payload = {target: "A1"}.to_json
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => user_1.api_key  }
+    #
+    response = post "/api/v1/games/#{game.id}/shots", params: payload, headers: headers
+   end
 end
